@@ -8,7 +8,7 @@
 
 
     <!-- dubbo配置-start -->
-    <dubbo:protocol name="dubbo" port="20894"/>
+    <dubbo:protocol name="dubbo" port="20896"/>
     <dubbo:application name="demo-web"/>
     <dubbo:registry address="${dubbo.registry.address}"/>
     <dubbo:consumer check="false" timeout="3000"/>

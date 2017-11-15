@@ -70,7 +70,7 @@
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
         <property name="patterns">
             <list>
-                <value>com.dmsdbj.itoo.demo.dao.*</value>
+                <value>com.dmsdbj.dmt.graduatorHelp.dao.*</value>
             </list>
         </property>
     </bean>

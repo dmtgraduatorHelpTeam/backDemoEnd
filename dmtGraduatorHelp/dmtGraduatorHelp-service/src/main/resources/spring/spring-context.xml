@@ -21,10 +21,10 @@
     <bean class="com.dmsdbj.itoo.tool.spring.SpringContextHolder" lazy-init="false"/>
 
     <!--配置service扫描 -->
-    <context:component-scan base-package="com.dmsdbj.itoo.demo.service"/>
+    <context:component-scan base-package="com.dmsdbj.dmt.graduatorHelp.service"/>
     <!--配置facade扫描 -->
-    <context:component-scan base-package="com.dmsdbj.itoo.demo.facade.impl"/>
+    <context:component-scan base-package="com.dmsdbj.dmt.graduatorHelp.facade.impl"/>
     <!--配置dao扫描 -->
-    <context:component-scan base-package="com.dmsdbj.itoo.demo.dao"/>
+    <context:component-scan base-package="com.dmsdbj.dmt.graduatorHelp.dao"/>
 
 </beans>

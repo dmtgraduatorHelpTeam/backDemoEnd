@@ -5,11 +5,11 @@ import testUtil.CommonFacade;
 import com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity;
 
 
-public class TestPersonalInfoFacade extends CommonFacade {
+public class PersonalInfoFacadeTest extends CommonFacade {
 
     /**
 	 *@author: 孔唯妍 
-	 *@create:2017-11-15 15:47:40
+	 *@create:2017-11-13 15:55:45
      *@DESCRIPTION:分页查询测试
      */
     @Test

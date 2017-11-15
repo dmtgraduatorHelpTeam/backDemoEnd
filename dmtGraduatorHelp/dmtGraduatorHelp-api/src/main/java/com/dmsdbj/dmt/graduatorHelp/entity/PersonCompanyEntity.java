@@ -1,7 +1,9 @@
 package com.dmsdbj.dmt.graduatorHelp.entity;
 
 import com.dmsdbj.itoo.tool.base.entity.BaseEntity;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 /**
  * @author: 马金兴 
