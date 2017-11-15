@@ -9,3 +9,229 @@
 2017-11-15 20:28:45,761 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
 2017-11-15 20:28:46,274 WARN  org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) main |- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commercialOppotunityService': Unsatisfied dependency expressed through field 'commercialOppotunityDao'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commercialOppotunityDao' defined in file [D:\backDemoEnd\dmtGraduatorHelp\dmtGraduatorHelp-service\target\classes\com\dmsdbj\dmt\graduatorHelp\dao\CommercialOppotunityDao.class]: Cannot resolve reference to bean 'sqlSessionFactory' while setting bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [spring/spring-mybatis.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\backDemoEnd\dmtGraduatorHelp\dmtGraduatorHelp-service\target\classes\mapper\ClassMapper-base.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.dmsdbj.itoo.demo.entity.ClassEntity'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.dmsdbj.itoo.demo.entity.ClassEntity
 2017-11-15 20:28:46,292 INFO  com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1712) main |- {dataSource-1} closed
+2017-11-15 20:42:11,901 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:42:11 CST 2017]; root of context hierarchy
+2017-11-15 20:42:12,070 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:42:12,745 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:42:13,089 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:42:13,511 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:42:13,848 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:42:13,952 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:42:15,820 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:42:17,977 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:42:25,597 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:42:25:597 | took 15ms | statement | connection 0
+ select
+         
+    id,
+    user_id,
+    name,
+    description,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_land_scape
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:42:58,298 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:42:58 CST 2017]; root of context hierarchy
+2017-11-15 20:42:58,395 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:42:58,810 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:42:58,851 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:42:59,079 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:42:59,245 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:42:59,336 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:43:00,298 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:43:03,436 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:43:08,961 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:43:08:961 | took 7ms | statement | connection 0
+ select
+         
+    id,
+    user_id,
+    family_mem_name,
+    relationship_id,
+    work,
+    phone,
+    QQ,
+    wechat,
+    email,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_home_info
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:43:20,045 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@59a6e353: startup date [Wed Nov 15 20:43:20 CST 2017]; root of context hierarchy
+2017-11-15 20:43:20,163 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:43:20,610 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:43:20,665 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:43:20,957 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:43:21,190 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:43:21,332 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:43:22,728 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:43:37,346 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:43:37 CST 2017]; root of context hierarchy
+2017-11-15 20:43:37,451 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:43:37,827 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:43:37,876 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:43:38,098 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:43:38,301 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:43:38,432 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:43:39,565 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:43:43,117 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:43:49,098 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:43:49:097 | took 5ms | statement | connection 0
+ select
+         
+    id,
+    user_id,
+    is_In_dmt,
+    certificate_no,
+    certificate_name,
+    certificate_type,
+    receive_time,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_education
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:44:03,266 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:44:03 CST 2017]; root of context hierarchy
+2017-11-15 20:44:03,384 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:44:03,776 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:44:03,818 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:44:04,112 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:44:04,265 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:44:04,476 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:44:05,659 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:44:09,127 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:44:13,714 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:44:13:713 | took 7ms | statement | connection 0
+ select
+         
+    id,
+    user_id,
+    name,
+    description,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_commercial_oppotunity
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:45:13,761 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@646be2c3: startup date [Wed Nov 15 20:45:13 CST 2017]; root of context hierarchy
+2017-11-15 20:45:14,049 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:45:14,882 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:45:14,964 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:45:15,622 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:45:16,089 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:45:16,219 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:45:17,648 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:45:21,362 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:45:24,568 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:45:24 CST 2017]; root of context hierarchy
+2017-11-15 20:45:24,775 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:45:25,680 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:45:25,993 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:45:26,496 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:45:26,787 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:45:27,068 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:45:28,555 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:45:32,514 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:45:36,576 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:45:36:575 | took 7ms | statement | connection 0
+ select
+         
+    id,
+    company_name,
+    company_tel,
+    entry_time,
+    quit_time,
+    funny_thing,
+    company_address,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_company
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:45:40,078 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:45:40:077 | took 5ms | statement | connection 0
+ select
+         
+    id,
+    dict_name,
+    dict_type_name,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_dictionary
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:47:12,558 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:47:12 CST 2017]; root of context hierarchy
+2017-11-15 20:47:12,658 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:47:13,116 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:47:13,177 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:47:13,457 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:47:13,569 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:47:13,735 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:47:14,842 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:47:18,100 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:47:23,125 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:47:23:124 | took 5ms | statement | connection 0
+ select
+         
+    id,
+    dict_name,
+    dict_type_name,
+    remark,
+    is_delete,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_dictionary
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;
+2017-11-15 20:47:37,824 INFO  org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) main |- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2812cbfa: startup date [Wed Nov 15 20:47:37 CST 2017]; root of context hierarchy
+2017-11-15 20:47:37,931 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring-context.xml]
+2017-11-15 20:47:38,314 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring.xml]
+2017-11-15 20:47:38,361 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-context.xml]
+2017-11-15 20:47:38,621 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-dubbo.xml]
+2017-11-15 20:47:38,777 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-db.xml]
+2017-11-15 20:47:38,894 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) main |- Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+2017-11-15 20:47:40,096 INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) main |- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-11-15 20:47:42,642 INFO  com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:932) main |- {dataSource-1} inited
+2017-11-15 20:47:47,481 INFO  com.p6spy.engine.spy.appender.Slf4JLogger.logSQL(Slf4JLogger.java:61) main |- 2017-11-15 20:47:47:481 | took 3ms | statement | connection 0
+ select
+         
+    id,
+    p_id,
+    user_id,
+    company_id,
+    is_delete,
+    tech_name,
+    remark,
+    operator,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+  
+        from t_skill_point
+        where id = '0044fbbe28c254673bc37a'  and is_delete = 0;

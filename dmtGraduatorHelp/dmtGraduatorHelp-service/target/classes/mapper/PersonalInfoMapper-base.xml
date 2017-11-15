@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--
+    作者:张欢-十二期
+    版本号:V2.1
+    功能:修改updateByExample方法中日期为now
+    日期:2017年11月1日
+-->
+<mapper namespace="com.dmsdbj.dmt.graduatorHelp.dao.PersonalInfoDao">
+    <resultMap id="BaseResultMap" type="com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity">
+
+    <result column="id" property="id" jdbcType="VARCHAR" />    
+
+    <result column="login_id" property="loginId" jdbcType="VARCHAR" />    
+
+    <result column="name" property="name" jdbcType="VARCHAR" />    
+
+    <result column="english_name" property="englishName" jdbcType="VARCHAR" />    
+
+    <result column="grade" property="grade" jdbcType="VARCHAR" />    
+
+    <result column="sex" property="sex" jdbcType="VARCHAR" />    
+
+    <result column="birthday" property="birthday" jdbcType="DATE" />    
+
+    <result column="email" property="email" jdbcType="VARCHAR" />    
+
+    <result column="phone" property="phone" jdbcType="VARCHAR" />    
+
+    <result column="emerg_phone" property="emergPhone" jdbcType="VARCHAR" />    
+
+    <result column="emerg_name" property="emergName" jdbcType="VARCHAR" />    
+
+    <result column="emerg_relation" property="emergRelation" jdbcType="VARCHAR" />    
+
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />    
+
+    <result column="qq" property="qq" jdbcType="VARCHAR" />    
+
+    <result column="enter_dmt_time" property="enterDmtTime" jdbcType="DATE" />    
+
+    <result column="graduate_dmt_time" property="graduateDmtTime" jdbcType="DATE" />    
+
+    <result column="enter_college_time" property="enterCollegeTime" jdbcType="DATE" />    
+
+    <result column="graduate_college_time" property="graduateCollegeTime" jdbcType="DATE" />    
+
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />    
+
+    <result column="address" property="address" jdbcType="VARCHAR" />    
+
+    <result column="professional_field" property="professionalField" jdbcType="VARCHAR" />    
+
+    <result column="remark" property="remark" jdbcType="VARCHAR" />    
+
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />    
+
+    <result column="operator_name" property="operatorName" jdbcType="VARCHAR" />    
+
+    <result column="operator_id" property="operatorId" jdbcType="VARCHAR" />    
+
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+
+    <result column="timestamp_time" property="timestampTime" jdbcType="TIMESTAMP" />    
+
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>  
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql> 
+ <sql id="Base_Column_List">
+    id,
+    login_id,
+    name,
+    english_name,
+    grade,
+    sex,
+    birthday,
+    email,
+    phone,
+    emerg_phone,
+    emerg_name,
+    emerg_relation,
+    wechat,
+    qq,
+    enter_dmt_time,
+    graduate_dmt_time,
+    enter_college_time,
+    graduate_college_time,
+    native_place,
+    address,
+    professional_field,
+    remark,
+    is_delete,
+    operator_name,
+    operator_id,
+    create_time,
+    update_time,
+    timestamp_time
+ </sql>  
+  <select id="getCountByExample" parameterType="com.dmsdbj.dmt.graduatorHelp.mybatisexample.PersonalInfoExample"
+            resultType="java.lang.Long">
+        select count(*) from t_personal_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+  </select> 
+   <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_personal_info
+        where id = #{id,jdbcType=VARCHAR}  and is_delete = 0
+    </select>  
+    <select id="selectByExample" parameterType="com.dmsdbj.dmt.graduatorHelp.mybatisexample.PersonalInfoExample" resultMap="BaseResultMap">
+        select
+        <if test="example.distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from t_personal_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="example.orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="example.limit != null">
+            <if test="example.offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="example.offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>   
+    <insert id="insertForce" parameterType="com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity">
+    insert into t_personal_info (             
+                id,
+                login_id,
+                name,
+                english_name,
+                grade,
+                sex,
+                birthday,
+                email,
+                phone,
+                emerg_phone,
+                emerg_name,
+                emerg_relation,
+                wechat,
+                qq,
+                enter_dmt_time,
+                graduate_dmt_time,
+                enter_college_time,
+                graduate_college_time,
+                native_place,
+                address,
+                professional_field,
+                remark,
+                is_delete,
+                operator_name,
+                operator_id,
+                create_time,
+                update_time,
+                timestamp_time)
+    values (
+				#{id,jdbcType=VARCHAR},
+				#{loginId,jdbcType=VARCHAR},
+				#{name,jdbcType=VARCHAR},
+				#{englishName,jdbcType=VARCHAR},
+				#{grade,jdbcType=VARCHAR},
+				#{sex,jdbcType=VARCHAR},
+				#{birthday,jdbcType=DATE},
+				#{email,jdbcType=VARCHAR},
+				#{phone,jdbcType=VARCHAR},
+				#{emergPhone,jdbcType=VARCHAR},
+				#{emergName,jdbcType=VARCHAR},
+				#{emergRelation,jdbcType=VARCHAR},
+				#{wechat,jdbcType=VARCHAR},
+				#{qq,jdbcType=VARCHAR},
+				#{enterDmtTime,jdbcType=DATE},
+				#{graduateDmtTime,jdbcType=DATE},
+				#{enterCollegeTime,jdbcType=DATE},
+				#{graduateCollegeTime,jdbcType=DATE},
+				#{nativePlace,jdbcType=VARCHAR},
+				#{address,jdbcType=VARCHAR},
+				#{professionalField,jdbcType=VARCHAR},
+				#{remark,jdbcType=VARCHAR},
+				#{isDelete,jdbcType=TINYINT},
+				#{operatorName,jdbcType=VARCHAR},
+				#{operatorId,jdbcType=VARCHAR},
+				now(),
+				now(),
+				#{timestampTime,jdbcType=TIMESTAMP})
+  </insert>   
+    <insert id="insert" parameterType="com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity">
+        insert into t_personal_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>           
+            <if test="loginId != null">
+                login_id,
+            </if>           
+            <if test="name != null">
+                name,
+            </if>           
+            <if test="englishName != null">
+                english_name,
+            </if>           
+            <if test="grade != null">
+                grade,
+            </if>           
+            <if test="sex != null">
+                sex,
+            </if>           
+            <if test="birthday != null">
+                birthday,
+            </if>           
+            <if test="email != null">
+                email,
+            </if>           
+            <if test="phone != null">
+                phone,
+            </if>           
+            <if test="emergPhone != null">
+                emerg_phone,
+            </if>           
+            <if test="emergName != null">
+                emerg_name,
+            </if>           
+            <if test="emergRelation != null">
+                emerg_relation,
+            </if>           
+            <if test="wechat != null">
+                wechat,
+            </if>           
+            <if test="qq != null">
+                qq,
+            </if>           
+            <if test="enterDmtTime != null">
+                enter_dmt_time,
+            </if>           
+            <if test="graduateDmtTime != null">
+                graduate_dmt_time,
+            </if>           
+            <if test="enterCollegeTime != null">
+                enter_college_time,
+            </if>           
+            <if test="graduateCollegeTime != null">
+                graduate_college_time,
+            </if>           
+            <if test="nativePlace != null">
+                native_place,
+            </if>           
+            <if test="address != null">
+                address,
+            </if>           
+            <if test="professionalField != null">
+                professional_field,
+            </if>           
+            <if test="remark != null">
+                remark,
+            </if>           
+                is_delete,
+            <if test="operatorName != null">
+                operator_name,
+            </if>           
+            <if test="operatorId != null">
+                operator_id,
+            </if>           
+                create_time,
+                update_time,
+            <if test="timestampTime != null">
+                timestamp_time            </if>           
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>  
+            <if test="loginId != null">
+                #{loginId,jdbcType=VARCHAR},
+            </if>  
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>  
+            <if test="englishName != null">
+                #{englishName,jdbcType=VARCHAR},
+            </if>  
+            <if test="grade != null">
+                #{grade,jdbcType=VARCHAR},
+            </if>  
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>  
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>  
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>  
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>  
+            <if test="emergPhone != null">
+                #{emergPhone,jdbcType=VARCHAR},
+            </if>  
+            <if test="emergName != null">
+                #{emergName,jdbcType=VARCHAR},
+            </if>  
+            <if test="emergRelation != null">
+                #{emergRelation,jdbcType=VARCHAR},
+            </if>  
+            <if test="wechat != null">
+                #{wechat,jdbcType=VARCHAR},
+            </if>  
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>  
+            <if test="enterDmtTime != null">
+                #{enterDmtTime,jdbcType=DATE},
+            </if>  
+            <if test="graduateDmtTime != null">
+                #{graduateDmtTime,jdbcType=DATE},
+            </if>  
+            <if test="enterCollegeTime != null">
+                #{enterCollegeTime,jdbcType=DATE},
+            </if>  
+            <if test="graduateCollegeTime != null">
+                #{graduateCollegeTime,jdbcType=DATE},
+            </if>  
+            <if test="nativePlace != null">
+                #{nativePlace,jdbcType=VARCHAR},
+            </if>  
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>  
+            <if test="professionalField != null">
+                #{professionalField,jdbcType=VARCHAR},
+            </if>  
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>  
+                0,
+            <if test="operatorName != null">
+                #{operatorName,jdbcType=VARCHAR},
+            </if>  
+            <if test="operatorId != null">
+                #{operatorId,jdbcType=VARCHAR},
+            </if>  
+                now(),                       
+                now(),                       
+            <if test="timestampTime != null">
+                #{timestampTime,jdbcType=TIMESTAMP}            </if>  
+        </trim>
+  </insert>  
+  <insert id="insertAll" parameterType="com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity">
+        insert into t_personal_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                id,  
+                login_id,  
+                name,  
+                english_name,  
+                grade,  
+                sex,  
+                birthday,  
+                email,  
+                phone,  
+                emerg_phone,  
+                emerg_name,  
+                emerg_relation,  
+                wechat,  
+                qq,  
+                enter_dmt_time,  
+                graduate_dmt_time,  
+                enter_college_time,  
+                graduate_college_time,  
+                native_place,  
+                address,  
+                professional_field,  
+                remark,  
+                is_delete,  
+                operator_name,  
+                operator_id,  
+                create_time,  
+                update_time,  
+                timestamp_time        </trim>        
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+                #{item.id,jdbcType=VARCHAR},
+                #{item.loginId,jdbcType=VARCHAR},
+                #{item.name,jdbcType=VARCHAR},
+                #{item.englishName,jdbcType=VARCHAR},
+                #{item.grade,jdbcType=VARCHAR},
+                #{item.sex,jdbcType=VARCHAR},
+                #{item.birthday,jdbcType=DATE},
+                #{item.email,jdbcType=VARCHAR},
+                #{item.phone,jdbcType=VARCHAR},
+                #{item.emergPhone,jdbcType=VARCHAR},
+                #{item.emergName,jdbcType=VARCHAR},
+                #{item.emergRelation,jdbcType=VARCHAR},
+                #{item.wechat,jdbcType=VARCHAR},
+                #{item.qq,jdbcType=VARCHAR},
+                #{item.enterDmtTime,jdbcType=DATE},
+                #{item.graduateDmtTime,jdbcType=DATE},
+                #{item.enterCollegeTime,jdbcType=DATE},
+                #{item.graduateCollegeTime,jdbcType=DATE},
+                #{item.nativePlace,jdbcType=VARCHAR},
+                #{item.address,jdbcType=VARCHAR},
+                #{item.professionalField,jdbcType=VARCHAR},
+                #{item.remark,jdbcType=VARCHAR},
+                0,
+                #{item.operatorName,jdbcType=VARCHAR},
+                #{item.operatorId,jdbcType=VARCHAR},
+				now(),
+				now(),
+                #{item.timestampTime,jdbcType=TIMESTAMP}        
+        )   
+        </foreach>                
+  </insert> 
+  <delete id="deleteById" parameterType="java.lang.String">
+    update t_personal_info set is_delete = 1 , update_time=now() , operator = #{operator,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR} and is_delete = 0
+  </delete>
+  <delete id="deleteByIds">
+    update t_personal_info set is_delete = 1  , update_time=now() , operator = #{operator,jdbcType=VARCHAR}
+    where id in (
+        <foreach collection="list" item="id" separator=",">
+            #{id}
+        </foreach>
+        )  and is_delete = 0
+  </delete>      
+  <delete id="deleteByExample" parameterType="com.dmsdbj.dmt.graduatorHelp.mybatisexample.PersonalInfoExample">
+        update t_personal_info set is_delete = 1 , update_time=now() , operator = #{operator,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+  </delete>
+  <update id="updateById" parameterType="com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity">
+        update t_personal_info
+        <set>
+                login_id = #{loginId,jdbcType=VARCHAR},                  
+                name = #{name,jdbcType=VARCHAR},                  
+                english_name = #{englishName,jdbcType=VARCHAR},                  
+                grade = #{grade,jdbcType=VARCHAR},                  
+                sex = #{sex,jdbcType=VARCHAR},                  
+                birthday = #{birthday,jdbcType=DATE},                  
+                email = #{email,jdbcType=VARCHAR},                  
+                phone = #{phone,jdbcType=VARCHAR},                  
+                emerg_phone = #{emergPhone,jdbcType=VARCHAR},                  
+                emerg_name = #{emergName,jdbcType=VARCHAR},                  
+                emerg_relation = #{emergRelation,jdbcType=VARCHAR},                  
+                wechat = #{wechat,jdbcType=VARCHAR},                  
+                qq = #{qq,jdbcType=VARCHAR},                  
+                enter_dmt_time = #{enterDmtTime,jdbcType=DATE},                  
+                graduate_dmt_time = #{graduateDmtTime,jdbcType=DATE},                  
+                enter_college_time = #{enterCollegeTime,jdbcType=DATE},                  
+                graduate_college_time = #{graduateCollegeTime,jdbcType=DATE},                  
+                native_place = #{nativePlace,jdbcType=VARCHAR},                  
+                address = #{address,jdbcType=VARCHAR},                  
+                professional_field = #{professionalField,jdbcType=VARCHAR},                  
+                remark = #{remark,jdbcType=VARCHAR},                  
+                is_delete = #{isDelete,jdbcType=TINYINT},                  
+                operator_name = #{operatorName,jdbcType=VARCHAR},                  
+                operator_id = #{operatorId,jdbcType=VARCHAR},                  
+                update_time=now(), 
+                timestamp_time = #{timestampTime,jdbcType=TIMESTAMP}		</set>
+        where id = #{id,jdbcType=VARCHAR} and is_delete = 0
+  </update>
+  <update id="updateForceById" parameterType="com.dmsdbj.dmt.graduatorHelp.entity.PersonalInfoEntity">
+    update t_personal_info
+    set 
+        login_id = #{loginId,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        english_name = #{englishName,jdbcType=VARCHAR},
+        grade = #{grade,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=DATE},
+        email = #{email,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        emerg_phone = #{emergPhone,jdbcType=VARCHAR},
+        emerg_name = #{emergName,jdbcType=VARCHAR},
+        emerg_relation = #{emergRelation,jdbcType=VARCHAR},
+        wechat = #{wechat,jdbcType=VARCHAR},
+        qq = #{qq,jdbcType=VARCHAR},
+        enter_dmt_time = #{enterDmtTime,jdbcType=DATE},
+        graduate_dmt_time = #{graduateDmtTime,jdbcType=DATE},
+        enter_college_time = #{enterCollegeTime,jdbcType=DATE},
+        graduate_college_time = #{graduateCollegeTime,jdbcType=DATE},
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        professional_field = #{professionalField,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        is_delete = #{isDelete,jdbcType=TINYINT},
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+        update_time=now(),
+        timestamp_time = #{timestampTime,jdbcType=TIMESTAMP}		where id = #{id,jdbcType=VARCHAR} and is_delete = 0
+  </update>
+  <update id="updateByExample" parameterType="map">
+        update t_personal_info
+        <set>
+
+           <if test="record.id != null">
+		   
+                id = #{record.id,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.loginId != null">
+		   
+                login_id = #{record.loginId,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.name != null">
+		   
+                name = #{record.name,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.englishName != null">
+		   
+                english_name = #{record.englishName,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.grade != null">
+		   
+                grade = #{record.grade,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.sex != null">
+		   
+                sex = #{record.sex,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.birthday != null">
+		   
+                birthday = #{record.birthday,jdbcType=DATE},
+            </if>
+
+           <if test="record.email != null">
+		   
+                email = #{record.email,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.phone != null">
+		   
+                phone = #{record.phone,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.emergPhone != null">
+		   
+                emerg_phone = #{record.emergPhone,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.emergName != null">
+		   
+                emerg_name = #{record.emergName,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.emergRelation != null">
+		   
+                emerg_relation = #{record.emergRelation,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.wechat != null">
+		   
+                wechat = #{record.wechat,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.qq != null">
+		   
+                qq = #{record.qq,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.enterDmtTime != null">
+		   
+                enter_dmt_time = #{record.enterDmtTime,jdbcType=DATE},
+            </if>
+
+           <if test="record.graduateDmtTime != null">
+		   
+                graduate_dmt_time = #{record.graduateDmtTime,jdbcType=DATE},
+            </if>
+
+           <if test="record.enterCollegeTime != null">
+		   
+                enter_college_time = #{record.enterCollegeTime,jdbcType=DATE},
+            </if>
+
+           <if test="record.graduateCollegeTime != null">
+		   
+                graduate_college_time = #{record.graduateCollegeTime,jdbcType=DATE},
+            </if>
+
+           <if test="record.nativePlace != null">
+		   
+                native_place = #{record.nativePlace,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.address != null">
+		   
+                address = #{record.address,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.professionalField != null">
+		   
+                professional_field = #{record.professionalField,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.remark != null">
+		   
+                remark = #{record.remark,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.isDelete != null">
+		   
+                is_delete = #{record.isDelete,jdbcType=TINYINT},
+            </if>
+
+           <if test="record.operatorName != null">
+		   
+                operator_name = #{record.operatorName,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.operatorId != null">
+		   
+                operator_id = #{record.operatorId,jdbcType=VARCHAR},
+            </if>
+
+           <if test="record.createTime != null">
+		   
+                create_time = #{record.createTime,jdbcType=DATETIME},
+            </if>
+
+                update_time = now(),
+
+           <if test="record.timestampTime != null">
+		   
+                timestamp_time = #{record.timestampTime,jdbcType=TIMESTAMP}            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+	<update id="updateForceByExample" parameterType="map">
+        update t_personal_info
+        set 
+            id = #{record.id,jdbcType=VARCHAR},
+            login_id = #{record.loginId,jdbcType=VARCHAR},
+            name = #{record.name,jdbcType=VARCHAR},
+            english_name = #{record.englishName,jdbcType=VARCHAR},
+            grade = #{record.grade,jdbcType=VARCHAR},
+            sex = #{record.sex,jdbcType=VARCHAR},
+            birthday = #{record.birthday,jdbcType=DATE},
+            email = #{record.email,jdbcType=VARCHAR},
+            phone = #{record.phone,jdbcType=VARCHAR},
+            emerg_phone = #{record.emergPhone,jdbcType=VARCHAR},
+            emerg_name = #{record.emergName,jdbcType=VARCHAR},
+            emerg_relation = #{record.emergRelation,jdbcType=VARCHAR},
+            wechat = #{record.wechat,jdbcType=VARCHAR},
+            qq = #{record.qq,jdbcType=VARCHAR},
+            enter_dmt_time = #{record.enterDmtTime,jdbcType=DATE},
+            graduate_dmt_time = #{record.graduateDmtTime,jdbcType=DATE},
+            enter_college_time = #{record.enterCollegeTime,jdbcType=DATE},
+            graduate_college_time = #{record.graduateCollegeTime,jdbcType=DATE},
+            native_place = #{record.nativePlace,jdbcType=VARCHAR},
+            address = #{record.address,jdbcType=VARCHAR},
+            professional_field = #{record.professionalField,jdbcType=VARCHAR},
+            remark = #{record.remark,jdbcType=VARCHAR},
+            is_delete = #{record.isDelete,jdbcType=TINYINT},
+            operator_name = #{record.operatorName,jdbcType=VARCHAR},
+            operator_id = #{record.operatorId,jdbcType=VARCHAR},
+			update_time=now(),   
+            timestamp_time = #{record.timestampTime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>    
+</mapper>

@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.dmsdbj.itoo</groupId>
-        <artifactId>dmtGraduatorHelp-parent</artifactId>
+        <artifactId>demo-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <groupId>com.dmsdbj.itoo</groupId>
-    <artifactId>dmtGraduatorHelp-api</artifactId>
+    <artifactId>demo-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
