@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+    <!-- 配置redis客户端集群版 -->
+    <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
+        <constructor-arg>
+            <set>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg name="host" value="192.168.22.251"/>
+                    <constructor-arg name="port" value="6380"/>
+                </bean>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg name="host" value="192.168.22.251"/>
+                    <constructor-arg name="port" value="6381"/>
+                </bean>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg name="host" value="192.168.22.251"/>
+                    <constructor-arg name="port" value="6382"/>
+                </bean>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg name="host" value="192.168.22.251"/>
+                    <constructor-arg name="port" value="6383"/>
+                </bean>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg name="host" value="192.168.22.251"/>
+                    <constructor-arg name="port" value="6384"/>
+                </bean>
+                <bean class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg name="host" value="192.168.22.251"/>
+                    <constructor-arg name="port" value="6385"/>
+                </bean>
+            </set>
+        </constructor-arg>
+    </bean>
+</beans>

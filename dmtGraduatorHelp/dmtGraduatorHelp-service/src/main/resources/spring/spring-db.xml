@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <!-- 配置StatFilter的mergeSql属性 马金兴 2017年8月22日21:26:55-->
+        <property name="mergeSql" value="true"/>
+        <property name="logSlowSql" value="true"/>
+        <property name="slowSqlMillis" value="10000"/>
+    </bean>
+
+    <!--如果一些应用框架做了自己的JDBC Proxy Driver-->
+    <bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
+        <property name="dbType" value="mysql"/>
+    </bean>
+
+    <!--数据库连接设置-->
+    <!--数据库连接设置-->
+    <bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource">
+        <constructor-arg>
+            <ref bean="dataSourceDefault"/>
+        </constructor-arg>
+    </bean>
+    <bean id="dataSourceDefault" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+
+        <property name="url" value="${itoo_jdbc_url}"/>
+        <property name="username" value="${itoo_jdbc_username}"/>
+        <property name="password" value="${itoo_jdbc_password}"/>
+        <property name="maxActive" value="${itoo_jdbc_maxActive}"/>
+        <property name="initialSize" value="${itoo_jdbc_initialSize}"/>
+        <property name="maxWait" value="${itoo_jdbc_maxWait}"/>
+        <property name="minIdle" value="${itoo_jdbc_minIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${itoo_jdbc_timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${itoo_jdbc_minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${itoo_jdbc_validationQuery}"/>
+        <property name="testWhileIdle" value="${itoo_jdbc_testWhileIdle}"/>
+        <property name="testOnBorrow" value="${itoo_jdbc_testOnBorrow}"/>
+        <property name="testOnReturn" value="${itoo_jdbc_testOnReturn}"/>
+        <property name="poolPreparedStatements" value="${itoo_jdbc_poolPreparedStatements}"/>
+        <property name="maxOpenPreparedStatements" value="${itoo_jdbc_maxOpenPreparedStatements}"/>
+        <!--SQL合并配置-->
+        <property name="filters" value="mergeStat,wall"/>
+        <property name="connectionProperties" value="druid.stat.mergeSql=true"/>
+
+        <!-- 合并多个DruidDataSource的监控数据-->
+        <property name="useGlobalDataSourceStat" value="true"/>
+        <!-- filters和proxyFilters属性是组合关系的，dataSource有了两个Filter，StatFilter和Log4jFilter。-->
+
+        <property name="proxyFilters">
+            <list>
+                <ref bean="wall-filter"/>
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- Druid AOP配置 -->
+    <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+    </bean>
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>com.dmsdbj.itoo.demo.dao.*</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 打开监控  马金兴 2017年8月22日21:26:32 -->
+    <aop:config>
+        <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut"/>
+    </aop:config>
+
+    <!-- 对数据源进行事务管理 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <!-- 打开面向切面工具 -->
+    <aop:aspectj-autoproxy/>
+
+
+</beans>
